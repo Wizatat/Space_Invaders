@@ -1,3 +1,25 @@
+lives()
+level()
+invaderspeed()
+nextLevel()
+resetInvaders()
+let lives = 3;
+
+// Update the HTML to display lives
+document.getElementById('lives').textContent = lives;
+
+// Check if an invader reaches the player
+if (invader.y + invader.height >= player.y) {
+    lives--;
+    document.getElementById('lives').textContent = lives;
+    resetInvaders(); // Reset invaders after losing a life
+
+    if (lives === 0) {
+        isGameOver = true;
+        alert('Game Over! Final Score: ' + score);
+    }
+}
+
 let level = 1;
 let invaderSpeed = 1; // Initial speed of invaders
 
