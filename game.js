@@ -1,3 +1,27 @@
+let level = 1;
+let invaderSpeed = 1; // Initial speed of invaders
+
+// Call this function when all invaders are destroyed
+function nextLevel() {
+    level++;
+    invaderSpeed += 0.5; // Increase speed with each level
+    resetInvaders(); // Reset invader positions when progressing to the next level
+}
+
+// Reset invaders to start from the top again
+function resetInvaders() {
+    invaders.forEach((invader, index) => {
+        invader.x = (index % invaderColumnCount) * (invaderWidth + invaderMargin);
+        invader.y = Math.floor(index / invaderColumnCount) * (invaderHeight + invaderMargin);
+        invader.destroyed = false;
+    });
+}
+
+// Check if all invaders are destroyed
+if (invaders.every(invader => invader.destroyed)) {
+    nextLevel();
+}
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
